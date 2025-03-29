@@ -3,9 +3,21 @@ import random
 import time
 
 # Set the title of the application
-st.title("Quiz Application")
+st.title("Quiz Application with Usernames")
 
-# List of quiz questions, each with a question, multiple options, and the correct answer
+# Initialize session state for username
+if "username" not in st.session_state:
+    st.session_state.username = ""
+
+# User input for the username
+if not st.session_state.username:
+    st.session_state.username = st.text_input("Enter your username:")
+    if not st.session_state.username:
+        st.stop()  # Stop execution until username is entered
+
+st.write(f"Welcome, {st.session_state.username}!")
+
+# List of quiz questions
 questions = [
     {
         "question": "What is the capital of Pakistan?",
@@ -34,32 +46,26 @@ questions = [
     }
 ]
 
-# Initialize session state to store the current question
+# Initialize session state for the current question
 if "current_question" not in st.session_state:
-    st.session_state.current_question = random.choice(questions)  # Select a random question at the start
+    st.session_state.current_question = random.choice(questions)
 
-# Fetch the current question from session state
 question = st.session_state.current_question
 
-# Display the question as a subheader
+# Display the question
 st.subheader(question["question"])
 
-# Create a radio button selection for answer choices
-selected_option = st.radio("Choose your answer", question["options"], key="answer")
+# Create radio buttons for options
+selected_option = st.radio("Choose your answer:", question["options"], key="answer")
 
-# When the "Submit Answer" button is clicked
+# Submit Answer Button
 if st.button("Submit Answer"):
     if selected_option == question["answer"]:
-        st.success("Correct!")  # Show success message if the answer is correct
+        st.success(f"Correct, {st.session_state.username}!")
         st.balloons()
     else:
-        st.error(f"Incorrect! The correct answer is {question['answer']}.")  # Show error message if incorrect
-
-# Wait for 5 seconds before loading the next question
-time.sleep(5)
-
-# Select a new random question for the next round
-st.session_state.current_question = random.choice(questions)
-
-# Rerun the app to update the displayed question
-st.rerun()
+        st.error(f"Incorrect, {st.session_state.username}! The correct answer is {question['answer']}.")
+    
+    time.sleep(3)  # Pause before the next question
+    st.session_state.current_question = random.choice(questions)
+    st.rerun()
