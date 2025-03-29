@@ -1,25 +1,31 @@
 [[package]]
 name = "python-dateutil"
 version = "2.9.0"
+source = { url = "https://pypi.org/simple" }
 
 [[package]]
 name = "requests"
 version = "2.32.3"
+source = { url = "https://pypi.org/simple" }
 
 [[package]]
 name = "streamlit"
 version = "1.43.2"
+source = { url = "https://pypi.org/simple" }
 
 # Add more valid packages as needed
 
 [[package]]
 name = "numpy"
 version = "1.26.4"
+source = { url = "https://pypi.org/simple" }
 
 [[package]]
 name = "pandas"
 version = "2.1.5"
+source = { url = "https://pypi.org/simple" }
 
 [[package]]
 name = "matplotlib"
 version = "3.8.2"
+source = { url = "https://pypi.org/simple" }
