@@ -1,3 +1,6 @@
+[metadata]
+lock-version = "1.0"
+
 [[package]]
 name = "python-dateutil"
 version = "2.9.0"
@@ -12,8 +15,6 @@ source = { url = "https://pypi.org/simple" }
 name = "streamlit"
 version = "1.43.2"
 source = { url = "https://pypi.org/simple" }
-
-# Add more valid packages as needed
 
 [[package]]
 name = "numpy"
